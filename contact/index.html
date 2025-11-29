@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — diyolab.dev</title>
+  <meta name="description" content="Get in touch with Diyeddin Almohamad for collaborations, opportunities, or just to connect." />
+  <meta name="author" content="Diyeddin Almohamad" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    /* Page-specific styles for contact */
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #38bdf8, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .contact-hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact-methods {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-method {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .contact-method:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.8);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1rem;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--bg);
+    }
+
+    .contact-method h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    .contact-method p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--accent2);
+    }
+
+    .availability-status {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .response-time {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .contact-form {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.75rem;
+      color: var(--fg);
+      font-family: inherit;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .contact-methods {
+        gap: 1rem;
+      }
+      
+      .contact-method {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-title">DIYOLAB</div>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/projects">Projects</a>
+        <a href="/about">About</a>
+        <a href="/contact" class="active">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="contact-content">
+      <section class="contact-hero">
+        <h1>Let's Connect</h1>
+        <p>
+          Whether you have a project idea, want to collaborate, or just want to chat 
+          about technology, I'd love to hear from you.
+        </p>
+      </section>
+
+      <div class="availability-status">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          Available for new opportunities
+        </div>
+        <div class="response-time">
+          I typically respond within 24-48 hours
+        </div>
+      </div>
+
+      <section class="contact-methods">
+        <div class="contact-method">
+          <div class="contact-icon">✉️</div>
+          <h3>Email</h3>
+          <p>Best for detailed discussions, project inquiries, or professional opportunities.</p>
+          <a href="mailto:diyeddinalmohamad@gmail.com" class="contact-link">
+            diyeddinalmohamad@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-icon">💼</div>
+          <h3>LinkedIn</h3>
+          <p>Connect professionally and see my career journey and network.</p>
+          <a href="https://www.linkedin.com/in/diyeddinalmohamad" target="_blank" class="contact-link">
+            Connect on LinkedIn
+          </a>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-icon">🔧</div>
+          <h3>GitHub</h3>
+          <p>Explore my code, contribute to projects, or start a technical discussion.</p>
+          <a href="https://github.com/diyeddin" target="_blank" class="contact-link">
+            Follow on GitHub
+          </a>
+        </div>
+      </section>
+
+      <section class="contact-form">
+        <h3 style="margin-bottom: 1.5rem; color: var(--fg);">Send a Message</h3>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project, idea, or just say hello..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+          
+          <p class="form-note">
+            This form is currently for demonstration. Please use email for direct contact.
+          </p>
+        </form>
+      </section>
+
+      <section style="text-align: center; color: var(--muted); line-height: 1.6;">
+        <p>
+          <strong>What I'm looking for:</strong><br>
+          Interesting projects, collaboration opportunities, technical discussions, 
+          and connections with fellow builders and creators.
+        </p>
+      </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> diyolab.dev</span>
+      <span>Contact — let's build something together.</span>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple form submission handler (for demo purposes)
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Form submission is for demonstration only. Please use email for direct contact: diyeddinalmohamad@gmail.com');
+    });
+  </script>
+  <script src="/assets/js/chatbot.js"></script>
+</body>
+</html>
