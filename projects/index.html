@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — diyolab.dev</title>
+  <meta name="description" content="Projects and experiments in web development, systems, and machine intelligence by Diyeddin Almohamad." />
+  <meta name="author" content="Diyeddin Almohamad" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    /* Page-specific styles for projects */
+
+    main {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .projects-hero {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .projects-hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #38bdf8, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .projects-hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.8);
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--fg);
+    }
+
+    .project-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+    }
+
+    .coming-soon {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--muted);
+    }
+
+    .coming-soon h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--fg);
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-title">DIYOLAB</div>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/projects" class="active">Projects</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="projects-hero">
+        <h1>Projects</h1>
+        <p>
+          A collection of experiments, tools, and applications I've built
+          exploring the intersection of web technologies, systems, and AI.
+        </p>
+      </section>
+
+      <section class="projects-grid">
+        <!-- Example project cards - replace with your actual projects -->
+        <article class="project-card">
+          <h3>Particle Portrait System</h3>
+          <p>
+            Interactive particle system that renders portraits with RGB chromatic aberration effects.
+            Built with HTML5 Canvas and optimized JavaScript for smooth 60fps animations.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Canvas API</span>
+            <span class="tech-tag">CSS3</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Demo</a>
+            <a href="#" class="project-link">Source Code</a>
+          </div>
+        </article>
+
+        <!-- Add more project cards here -->
+        <article class="project-card">
+          <h3>Coming Soon</h3>
+          <p>
+            More projects are currently in development. Check back soon to see
+            additional work in AI, web systems, and experimental interfaces.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">In Progress</span>
+          </div>
+        </article>
+      </section>
+
+      <div class="coming-soon">
+        <h2>More Projects Coming Soon</h2>
+        <p>I'm constantly experimenting with new technologies and ideas. Follow my work on GitHub to stay updated.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> diyolab.dev</span>
+      <span>Projects — showcasing experiments and builds.</span>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="/assets/js/chatbot.js"></script>
+</body>
+</html>
