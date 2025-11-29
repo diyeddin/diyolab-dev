@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — diyolab.dev</title>
+  <meta name="description" content="Learn more about Diyeddin Almohamad - developer, researcher, and builder at the intersection of web, systems, and AI." />
+  <meta name="author" content="Diyeddin Almohamad" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    /* Page-specific styles for about */
+
+    .about-content {
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .about-content h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 2rem;
+      text-align: center;
+      background: linear-gradient(90deg, #38bdf8, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .about-section {
+      margin-bottom: 3rem;
+    }
+
+    .about-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .about-section p {
+      margin-bottom: 1.2rem;
+      color: var(--muted);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .skill-category {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .skill-category h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--fg);
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-list li {
+      padding: 0.3rem 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+    }
+
+    .timeline-item {
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 1rem;
+      bottom: -2rem;
+      width: 2px;
+      background: var(--border-subtle);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    .timeline-description {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-title">DIYOLAB</div>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/projects">Projects</a>
+        <a href="/about" class="active">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="about-content">
+      <h1>About Me</h1>
+
+      <section class="about-section">
+        <p>
+          I'm <span class="highlight">Diyeddin Almohamad</span>, a developer and researcher passionate about 
+          building at the intersection of web technologies, distributed systems, and machine intelligence.
+        </p>
+        
+        <p>
+          My work focuses on creating elegant solutions to complex problems, whether that's crafting 
+          interactive web experiences, designing scalable backend architectures, or experimenting with 
+          AI-powered applications. I believe in the power of technology to solve meaningful problems 
+          and improve how we interact with digital systems.
+        </p>
+
+        <p>
+          This digital lab serves as both a showcase of my work and a playground for new ideas. 
+          Every project here represents an exploration into what's possible when curiosity meets code.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>Technical Focus Areas</h2>
+        
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Frontend Development</h3>
+            <ul class="skill-list">
+              <li>JavaScript/TypeScript</li>
+              <li>React & Next.js</li>
+              <li>HTML5 Canvas & WebGL</li>
+              <li>CSS3 & Modern Layouts</li>
+              <li>Performance Optimization</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Backend Systems</h3>
+            <ul class="skill-list">
+              <li>Node.js & Python</li>
+              <li>REST & GraphQL APIs</li>
+              <li>Database Design</li>
+              <li>Microservices</li>
+              <li>Cloud Infrastructure</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>AI & Machine Learning</h3>
+            <ul class="skill-list">
+              <li>Large Language Models</li>
+              <li>Computer Vision</li>
+              <li>Natural Language Processing</li>
+              <li>ML Model Deployment</li>
+              <li>AI Application Architecture</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2>Journey</h2>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2024 - Present</div>
+            <div class="timeline-title">Independent Research & Development</div>
+            <div class="timeline-description">
+              Exploring the convergence of web technologies and AI, building experimental 
+              applications and contributing to open source projects.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2022 - 2024</div>
+            <div class="timeline-title">Full-Stack Development</div>
+            <div class="timeline-description">
+              Focused on scalable web applications, modern JavaScript frameworks, 
+              and cloud-native architectures.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2020 - 2022</div>
+            <div class="timeline-title">Systems & Infrastructure</div>
+            <div class="timeline-description">
+              Deep dive into distributed systems, containerization, and DevOps practices.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2>Philosophy</h2>
+        <p>
+          I believe in <span class="highlight">learning by building</span>. Every project is an opportunity 
+          to push boundaries, learn something new, and create value. Whether it's a simple animation 
+          or a complex distributed system, I approach each challenge with curiosity and attention to detail.
+        </p>
+
+        <p>
+          Technology moves fast, but good engineering principles remain constant: write clean code, 
+          think about the user experience, and always consider the broader impact of what you're building.
+        </p>
+      </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> diyolab.dev</span>
+      <span>About — the person behind the code.</span>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="/assets/js/chatbot.js"></script>
+</body>
+</html>
