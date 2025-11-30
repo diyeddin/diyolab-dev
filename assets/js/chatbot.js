@@ -2,7 +2,7 @@
 (function() {
   // Create and load the chatbot widget script
   const script = document.createElement('script');
-  script.src = 'http://localhost:8000/widget.js';
+  script.src = 'https://standbyai.diyolab.dev/widget.js';
   script.setAttribute('data-app-id', 'your-company-id');
   script.setAttribute('data-color', '#a855f7');
   script.setAttribute('data-bg', '#0f172a');
