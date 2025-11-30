@@ -17,5 +17,3 @@
   // Append the script to the document head
   document.head.appendChild(script);
 })();
-
-// [TODO] make the chat persist across all pages (use localStorage or cookies)
