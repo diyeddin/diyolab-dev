@@ -35,13 +35,20 @@
     const W = canvas.width;
     const H = canvas.height;
 
-    // Optimized configuration for RGB separation effect
+    // Mobile detection and performance optimization
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const isLowPower = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+    
+    // Dynamic configuration based on device capabilities
     const particles = [];
-    const density = 5;         // optimized for RGB effect performance
-    const particleSize = 1.2;  // smaller for cleaner RGB separation
-    const rgbOffset = 1.2;     // consistent RGB separation distance
-    const mouse = { x: null, y: null, radius: 200 };
+    const density = isMobile ? 8 : (isLowPower ? 7 : 6);
+    const particleSize = isMobile ? 1.0 : 1.5;
+    const rgbOffset = isMobile ? 0.8 : 1.2;
+    const mouse = { x: null, y: null, radius: isMobile ? 120 : 200 };
     let animationStarted = false;
+    let frameCount = 0;
+    const targetFPS = isMobile ? 30 : 60;
+    const frameInterval = 1000 / targetFPS;
 
     console.log(`Canvas initialized: ${W}x${H}`);
 
@@ -55,17 +62,17 @@
       } catch (err) {
         console.error("Error creating particles:", err);
       }
-      console.log(`Starting animation with ${particles.length} particles`);
+      console.log(`Starting animation with ${particles.length} particles (${isMobile ? 'mobile' : 'desktop'} mode)`);
       animationStarted = true;
-      animate();
+      requestAnimationFrame(animate);
     };
 
     img.onerror = (e) => {
       console.warn("Image failed to load (likely CORS with file:// protocol).");
       console.log("Attempted to load:", img.src);
-      console.log(`Starting animation with ${particles.length} particles`);
+      console.log(`Starting animation with ${particles.length} particles (${isMobile ? 'mobile' : 'desktop'} mode)`);
       animationStarted = true;
-      animate();
+      requestAnimationFrame(animate);
     };
 
     function createParticlesFromImage(image) {
@@ -182,8 +189,18 @@
       mouse.y = null;
     });
 
-    function animate() {
+    let lastFrameTime = 0;
+
+    function animate(currentTime) {
       if (!animationStarted) return;
+      
+      // Frame rate limiting for mobile
+      if (isMobile && currentTime - lastFrameTime < frameInterval) {
+        requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTime = currentTime;
+      frameCount++;
 
       // Clear canvas
       ctx.clearRect(0, 0, W, H);
@@ -222,34 +239,43 @@
         p.x += p.vx;
         p.y += p.vy;
 
-        // Optimized RGB separation rendering
+        // Optimized rendering based on device capabilities
         const { r, g, b } = p.color || { r: 148, g: 163, b: 184 };
-        const opacity = 0.65;
+        const opacity = isMobile ? 0.8 : 0.65;
         
-        ctx.shadowBlur = 1;
-        
-        // Red component (shifted left/up)
-        ctx.fillStyle = `rgba(${r}, 0, 0, ${opacity})`;
-        ctx.shadowColor = `rgba(${r}, 0, 0, 0.2)`;
-        ctx.beginPath();
-        ctx.arc(p.x - rgbOffset, p.y - rgbOffset * 0.5, particleSize, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Green component (centered)
-        ctx.fillStyle = `rgba(0, ${g}, 0, ${opacity})`;
-        ctx.shadowColor = `rgba(0, ${g}, 0, 0.2)`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, particleSize, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Blue component (shifted right/down)
-        ctx.fillStyle = `rgba(0, 0, ${b}, ${opacity})`;
-        ctx.shadowColor = `rgba(0, 0, ${b}, 0.2)`;
-        ctx.beginPath();
-        ctx.arc(p.x + rgbOffset, p.y + rgbOffset * 0.5, particleSize, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.shadowBlur = 0;
+        if (isMobile) {
+          // Simplified single particle rendering for mobile (using original colors)
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, particleSize, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          // Full RGB separation for desktop
+          ctx.shadowBlur = 1;
+          
+          // Red component (shifted left/up)
+          ctx.fillStyle = `rgba(${r}, 0, 0, ${opacity})`;
+          ctx.shadowColor = `rgba(${r}, 0, 0, 0.2)`;
+          ctx.beginPath();
+          ctx.arc(p.x - rgbOffset, p.y - rgbOffset * 0.5, particleSize, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Green component (centered)
+          ctx.fillStyle = `rgba(0, ${g}, 0, ${opacity})`;
+          ctx.shadowColor = `rgba(0, ${g}, 0, 0.2)`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, particleSize, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Blue component (shifted right/down)
+          ctx.fillStyle = `rgba(0, 0, ${b}, ${opacity})`;
+          ctx.shadowColor = `rgba(0, 0, ${b}, 0.2)`;
+          ctx.beginPath();
+          ctx.arc(p.x + rgbOffset, p.y + rgbOffset * 0.5, particleSize, 0, Math.PI * 2);
+          ctx.fill();
+          
+          ctx.shadowBlur = 0;
+        }
       }
 
       requestAnimationFrame(animate);
