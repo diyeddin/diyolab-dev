@@ -54,6 +54,34 @@
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
       padding: 1.5rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 32px rgba(56, 189, 248, 0.15);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .skill-category:hover::before {
+      transform: scaleX(1);
     }
 
     .skill-category h3 {
@@ -71,6 +99,17 @@
       padding: 0.3rem 0;
       color: var(--muted);
       font-size: 0.9rem;
+      transition: all 0.2s ease;
+      padding-left: 0.5rem;
+      border-left: 2px solid transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .skill-list li:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
     }
 
     .highlight {
@@ -225,7 +264,7 @@
               <li>ASP.NET Core</li>
               <li>FastAPI</li>
               <li>REST APIs</li>
-              <li>Entity Framework Core</li>
+              <li>EF Core</li>
               <li>MSSQL / PostgreSQL</li>
               <li>MySQL</li>
             </ul>
