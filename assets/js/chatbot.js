@@ -21,18 +21,26 @@
   script.onload = function() {
     // Wait for widget to be ready
     setTimeout(function() {
-      // Track chatbot button clicks (when widget opens)
+      let isOpen = false;
+      
+      // Track chatbot button clicks (when widget opens/closes)
       const chatbotButton = document.querySelector('.chat-bubble');
       
       if (chatbotButton) {
         chatbotButton.addEventListener('click', function() {
           if (window.umami) {
-            umami.track('chatbot-opened');
+            if (!isOpen) {
+              umami.track('chatbot-opened');
+              isOpen = true;
+            } else {
+              umami.track('chatbot-closed');
+              isOpen = false;
+            }
           }
         });
       }
 
-      // Track when iframe appears (chatbot window opened)
+      // Track when iframe appears/disappears (chatbot window opened/closed)
       const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           mutation.addedNodes.forEach(function(node) {
@@ -40,20 +48,16 @@
               if (window.umami) {
                 umami.track('chatbot-widget-loaded');
               }
-              
-              // Track when messages are sent (detect iframe activity)
-              const messageTracker = setInterval(function() {
-                if (window.umami && node.contentWindow) {
-                  // Check if iframe is still visible
-                  const isVisible = node.offsetParent !== null;
-                  if (!isVisible) {
-                    clearInterval(messageTracker);
-                    if (window.umami) {
-                      umami.track('chatbot-closed');
-                    }
-                  }
-                }
-              }, 1000);
+            }
+          });
+          
+          // Track removed iframes (chatbot closed)
+          mutation.removedNodes.forEach(function(node) {
+            if (node.tagName === 'IFRAME' && node.src && node.src.includes('standbyai')) {
+              if (window.umami) {
+                umami.track('chatbot-widget-closed');
+                isOpen = false;
+              }
             }
           });
         });
