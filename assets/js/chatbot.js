@@ -39,34 +39,6 @@
           }
         });
       }
-
-      // Track when iframe appears/disappears (chatbot window opened/closed)
-      const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          mutation.addedNodes.forEach(function(node) {
-            if (node.tagName === 'IFRAME' && node.src && node.src.includes('standbyai')) {
-              if (window.umami) {
-                umami.track('chatbot-widget-loaded');
-              }
-            }
-          });
-          
-          // Track removed iframes (chatbot closed)
-          mutation.removedNodes.forEach(function(node) {
-            if (node.tagName === 'IFRAME' && node.src && node.src.includes('standbyai')) {
-              if (window.umami) {
-                umami.track('chatbot-widget-closed');
-                isOpen = false;
-              }
-            }
-          });
-        });
-      });
-
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
     }, 1000);
   };
 })();
