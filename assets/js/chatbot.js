@@ -22,9 +22,7 @@
     // Wait for widget to be ready
     setTimeout(function() {
       // Track chatbot button clicks (when widget opens)
-      const chatbotButton = document.querySelector('[data-brand="standbyai"]') || 
-                           document.querySelector('.chatbot-button') ||
-                           document.querySelector('.chat-widget-button');
+      const chatbotButton = document.querySelector('.chat-bubble');
       
       if (chatbotButton) {
         chatbotButton.addEventListener('click', function() {
