@@ -133,6 +133,18 @@
       font-size: 0.9rem;
     }
 
+    .education-box {
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .education-box p {
+      margin-bottom: 0;
+    }
+
     @media (max-width: 640px) {
       .skills-grid {
         grid-template-columns: 1fr;
@@ -159,20 +171,23 @@
 
       <section class="about-section">
         <p>
-          I'm <span class="highlight">Diyeddin Almohamad</span>, a developer and researcher passionate about 
-          building at the intersection of web technologies, distributed systems, and machine intelligence.
+          I'm <span class="highlight">Diyeddin Almohamad</span>, a Computer Engineering graduate from 
+          Erciyes University with a passion for self-improvement and cutting-edge AI technologies.
         </p>
         
         <p>
-          My work focuses on creating elegant solutions to complex problems, whether that's crafting 
-          interactive web experiences, designing scalable backend architectures, or experimenting with 
-          AI-powered applications. I believe in the power of technology to solve meaningful problems 
-          and improve how we interact with digital systems.
+          Proficient in Python, C, C#, and Java, with a strong foundation in computer science principles 
+          such as OOP, DBMS, and Data Structures & Algorithms. I've built deep learning systems through 
+          academic projects and internships, including an end-to-end perception system for autonomous driving 
+          using YOLOv11x-seg, an NLP-based automatic short-answer grading system with BERT, and a bidirectional 
+          Turkish-English machine translation model using UMT5.
         </p>
 
         <p>
-          This digital lab serves as both a showcase of my work and a playground for new ideas. 
-          Every project here represents an exploration into what's possible when curiosity meets code.
+          Currently working on personal projects including an FAQ Chatbot SaaS platform with embeddable widgets 
+          using RAG architecture, and a mall delivery mobile application. Graduate of the Google IT Automation 
+          with Python specialization and completed the AI Specialist Training Program by Turkey's Ministry of 
+          Industry and Technology.
         </p>
       </section>
 
@@ -181,37 +196,63 @@
         
         <div class="skills-grid">
           <div class="skill-category">
-            <h3>Frontend Development</h3>
+            <h3>Programming Languages</h3>
             <ul class="skill-list">
-              <li>JavaScript/TypeScript</li>
-              <li>React & Next.js</li>
-              <li>HTML5 Canvas & WebGL</li>
-              <li>CSS3 & Modern Layouts</li>
-              <li>Performance Optimization</li>
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3>Backend Systems</h3>
-            <ul class="skill-list">
-              <li>Node.js & Python</li>
-              <li>REST & GraphQL APIs</li>
-              <li>Database Design</li>
-              <li>Microservices</li>
-              <li>Cloud Infrastructure</li>
+              <li>Python</li>
+              <li>C / C#</li>
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>MATLAB</li>
+              <li>SQL</li>
             </ul>
           </div>
 
           <div class="skill-category">
             <h3>AI & Machine Learning</h3>
             <ul class="skill-list">
-              <li>Large Language Models</li>
               <li>Computer Vision</li>
-              <li>Natural Language Processing</li>
-              <li>ML Model Deployment</li>
-              <li>AI Application Architecture</li>
+              <li>NLP & Transformers</li>
+              <li>BERT / YOLO / U-Net</li>
+              <li>PyTorch / TensorFlow</li>
+              <li>LangChain & RAG</li>
+              <li>Scikit-learn / XGBoost</li>
             </ul>
           </div>
+
+          <div class="skill-category">
+            <h3>Web & Backend</h3>
+            <ul class="skill-list">
+              <li>ASP.NET Core</li>
+              <li>FastAPI</li>
+              <li>REST APIs</li>
+              <li>Entity Framework Core</li>
+              <li>MSSQL / PostgreSQL</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Cloud & DevOps</h3>
+            <ul class="skill-list">
+              <li>Oracle Cloud</li>
+              <li>Azure / AWS</li>
+              <li>Docker</li>
+              <li>Git / GitHub</li>
+              <li>Linux / Bash</li>
+              <li>Hadoop / Spark</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2>Education</h2>
+        <div class="education-box">
+          <p>
+            <span class="highlight">Erciyes University</span> - Computer Engineering (Oct 2021 - Jul 2025)<br>
+            GPA: 3.64/4.00 | Ranked 1st in Computer Engineering Department and 2nd in Engineering Faculty<br>
+            Türkiye Scholarship recipient for outstanding international students
+          </p>
         </div>
       </section>
 
@@ -220,44 +261,69 @@
         
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date">2024 - Present</div>
-            <div class="timeline-title">Independent Research & Development</div>
+            <div class="timeline-date">Aug 2025 - Present</div>
+            <div class="timeline-title">Independent Developer - Personal Projects</div>
             <div class="timeline-description">
-              Exploring the convergence of web technologies and AI, building experimental 
-              applications and contributing to open source projects.
+              Building an FAQ Chatbot SaaS platform with embeddable widgets using RAG architecture, LangChain, 
+              and Oracle Cloud. Developing a mall delivery mobile application for streamlined shopping experiences.
             </div>
           </div>
 
           <div class="timeline-item">
-            <div class="timeline-date">2022 - 2024</div>
-            <div class="timeline-title">Full-Stack Development</div>
+            <div class="timeline-date">Feb 2025 - Aug 2025</div>
+            <div class="timeline-title">Computer Vision Member - Erciyes Autonomous Team</div>
             <div class="timeline-description">
-              Focused on scalable web applications, modern JavaScript frameworks, 
-              and cloud-native architectures.
+              Developed real-time computer vision systems for autonomous vehicles. Contributed to 
+              lane segmentation and traffic sign detection modules using YOLOv11x-seg and Ultralytics framework.
             </div>
           </div>
 
           <div class="timeline-item">
-            <div class="timeline-date">2020 - 2022</div>
-            <div class="timeline-title">Systems & Infrastructure</div>
+            <div class="timeline-date">Aug 2024 - Sep 2024</div>
+            <div class="timeline-title">Back-End Developer Intern - Innovation Consulting & Solutions</div>
             <div class="timeline-description">
-              Deep dive into distributed systems, containerization, and DevOps practices.
+              Designed and developed a donation management web application using ASP.NET Core, implementing 
+              Repository and Unit of Work patterns with Entity Framework Core and MSSQL.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Jan 2024 - Jul 2024</div>
+            <div class="timeline-title">AI Specialist Trainee - Ministry of Industry and Technology</div>
+            <div class="timeline-description">
+              Participated in AI training program with Baykar, Havelsan, TÜBİTAK, Huawei, and Arçelik. 
+              Gained hands-on experience in Apache Hadoop, Spark, parallel computing, and cloud infrastructure.
             </div>
           </div>
         </div>
       </section>
 
       <section class="about-section">
-        <h2>Philosophy</h2>
+        <h2>Achievements</h2>
         <p>
-          I believe in <span class="highlight">learning by building</span>. Every project is an opportunity 
-          to push boundaries, learn something new, and create value. Whether it's a simple animation 
-          or a complex distributed system, I approach each challenge with curiosity and attention to detail.
+          <span class="highlight">Top of Computer Engineering Department</span> and <span class="highlight">Second of Engineering Faculty</span> 
+          at Erciyes University (2025 graduating class). Recipient of the highly competitive Türkiye Scholarship, 
+          awarded by the Presidency for Turks Abroad and Related Communities (YTB) for academic excellence and leadership potential.
         </p>
 
         <p>
-          Technology moves fast, but good engineering principles remain constant: write clean code, 
-          think about the user experience, and always consider the broader impact of what you're building.
+          Certified in AI and deep learning through DeepLearning.AI specializations (Convolutional Neural Networks, 
+          Neural Networks and Deep Learning) and completed the Google IT Automation with Python professional certificate. 
+          Multilingual: Arabic (Native), English (Professional), Turkish (Professional).
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>Philosophy</h2>
+        <p>
+          I believe in <span class="highlight">continuous learning and self-improvement</span>. Every project is an opportunity 
+          to push boundaries and solve meaningful problems. From autonomous driving perception systems to NLP-based 
+          grading tools, I approach each challenge with curiosity, rigor, and attention to detail.
+        </p>
+
+        <p>
+          My work sits at the intersection of research and engineering—combining theoretical understanding 
+          with practical implementation to build AI systems that make a real-world impact.
         </p>
       </section>
       </div>
