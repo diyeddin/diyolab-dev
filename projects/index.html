@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script defer src="https://stats.diyolab.dev/script.js" data-website-id="55014f7b-bb9c-437c-aa3e-94f886ab0646"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects — diyolab.dev</title>
-  <meta name="description" content="Projects and experiments in web development, systems, and machine intelligence by Diyeddin Almohamad." />
-  <meta name="author" content="Diyeddin Almohamad" />
-  <link rel="stylesheet" href="/assets/css/global.css" />
+  <meta name="description" content="Projects and experiments in web development, systems, and machine intelligence." />
+  
+  <link rel="stylesheet" href="/assets/css/global.css?v=2" />
+  
   <style>
-    /* Page-specific styles for projects */
-
+    /* --- PAGE LAYOUT --- */
     main {
       flex-direction: column;
       align-items: stretch;
@@ -46,19 +45,24 @@
       margin: 0 auto;
     }
 
+    /* --- STATIC CARD STYLES --- */
     .project-card {
       background: rgba(15, 23, 42, 0.6);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
       padding: 1.5rem;
-      transition: all 0.25s ease;
+      transition: all 0.3s ease;
       backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
 
     .project-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
       border-color: rgba(56, 189, 248, 0.4);
-      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.8);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
     .project-card h3 {
@@ -71,60 +75,201 @@
       color: var(--muted);
       line-height: 1.6;
       margin-bottom: 1rem;
+      flex-grow: 1;
     }
 
     .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .tech-tag {
-      background: rgba(56, 189, 248, 0.15);
+      background: rgba(56, 189, 248, 0.1);
       color: var(--accent);
       font-size: 0.8rem;
       padding: 0.3rem 0.7rem;
       border-radius: 6px;
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
-    .project-links {
+    /* --- ACTION BUTTONS --- */
+    .card-actions {
       display: flex;
-      gap: 0.8rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
-      transition: color 0.2s ease;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--fg); }
+
+    .btn-gallery {
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      border: none;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-gallery:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
     }
 
-    .project-link:hover {
-      color: var(--accent);
-    }
-
+    /* --- COMING SOON --- */
     .coming-soon {
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 4rem 1rem;
+      margin-top: 2rem;
       color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .coming-soon h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
       color: var(--fg);
     }
 
+    .coming-soon p {
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* --- COLLAGE MODAL --- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.95);
+      z-index: 9999;
+      backdrop-filter: blur(5px);
+      padding: 2rem;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .modal-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      color: var(--fg);
+    }
+
+    .close-modal {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--muted);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .close-modal:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* MASONRY GRID (DEFAULT) 
+       Used for Mall App
+    */
+    .collage-grid {
+      columns: 3 300px;
+      column-gap: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .collage-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #0f172a;
+      transition: transform 0.3s ease;
+    }
+
+    .collage-item:hover {
+      transform: scale(1.01);
+      border-color: var(--accent);
+    }
+
+    .collage-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* SINGLE COLUMN OVERRIDE (FOR CHATBOT)
+       Forces images to be large, stacked vertically, with no borders.
+    */
+    div.collage-grid.single-col {
+      columns: unset !important; /* Force override */
+      display: flex !important;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 100% !important; /* Full width */
+      margin: 0 auto;
+    }
+
+    /* Remove the card-like border/background for single column items to remove gaps */
+    div.collage-grid.single-col .collage-item {
+      border: none !important;
+      background: transparent !important;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    div.collage-grid.single-col .collage-item img {
+      border-radius: 8px; /* Round the image itself instead of container */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5); /* Add shadow to image directly */
+    }
+
     @media (max-width: 640px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
+      .projects-grid { grid-template-columns: 1fr; }
+      .modal-overlay { padding: 1rem; }
+      .collage-grid { columns: 1; }
     }
   </style>
 </head>
@@ -150,115 +295,109 @@
       </section>
 
       <section class="projects-grid">
-        <!-- FAQ Chatbot Widget -->
+        
+        <article class="project-card">
+          <h3>Mall Delivery App</h3>
+          <p>
+            A comprehensive hyperlocal delivery ecosystem featuring two distinct <strong>React Native</strong> mobile applications for Customers and Drivers. 
+            The system orchestrates real-time order lifecycles through a <strong>FastAPI</strong> backend, utilizing <strong>Redis</strong> for high-performance dispatch queuing and state management. 
+            Key features include live driver tracking via <code>react-native-maps</code>, dynamic route visualization, and a containerized infrastructure using <strong>Docker</strong> and <strong>Caddy</strong>.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">React Native / Expo</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Tailwind</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/diyeddin" class="project-link" target="_blank">View Code →</a>
+            <button class="btn-gallery" onclick="openCollage('delivery')">
+              <span>📷 View Gallery</span>
+            </button>
+          </div>
+        </article>
+
         <article class="project-card">
           <h3>FAQ Chatbot with Embeddable Widget</h3>
           <p>
-            Production-ready AI-powered FAQ system with embeddable widget for any website. 
-            Implements RAG architecture using LangChain, Groq LLMs, and Google Gemini embeddings 
-            with Chroma vector store for semantic search. Features real-time streaming responses, 
-            multi-language support, and customizable theming through data attributes. 
+            Production-ready AI-powered FAQ system with embeddable widget for any website.
+            Implements RAG architecture using LangChain, Groq LLMs, and Google Gemini embeddings with Chroma vector store for semantic search.
+            Features real-time streaming responses, multi-language support, and customizable theming through data attributes.
             Enterprise-level architecture with iframe-based embedding via single script tag.
           </p>
           <div class="project-tech">
             <span class="tech-tag">FastAPI</span>
             <span class="tech-tag">LangChain</span>
-            <span class="tech-tag">Groq API</span>
-            <span class="tech-tag">Gemini</span>
-            <span class="tech-tag">Chroma</span>
-            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Groq / Gemini</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">ChromaDB</span>
             <span class="tech-tag">RAG</span>
-            <span class="tech-tag">Oracle Cloud</span>
           </div>
-          <div class="project-links">
-            <a href="https://standbyai.diyolab.dev" class="project-link">View Live</a>
-          </div>
-        </article>
-
-        <!-- Portfolio Website -->
-        <article class="project-card">
-          <h3>Personal Portfolio & Interactive Resume</h3>
-          <p>
-            Modern, responsive portfolio website featuring interactive particle-based portrait system 
-            with RGB chromatic aberration effects. Built with vanilla JavaScript and HTML5 Canvas 
-            for optimal performance. Includes AI-powered chatbot integration, smooth animations, 
-            and a clean, minimalist design optimized for 60fps rendering across all devices.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">HTML5 Canvas</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">Responsive Design</span>
-            <span class="tech-tag">AI Chatbot</span>
-          </div>
-          <div class="project-links">
-            <a href="/" class="project-link">View Live</a>
-            <a href="https://github.com/diyeddin/diyolab-dev" class="project-link">Source Code</a>
+          <div class="card-actions">
+            <a href="https://standbyai.diyolab.dev" class="project-link" target="_blank">View Live →</a>
+            <button class="btn-gallery" onclick="openCollage('chatbot')">
+              <span>📷 View Gallery</span>
+            </button>
           </div>
         </article>
 
-        <!-- Autonomous Driving Project -->
         <article class="project-card">
           <h3>Autonomous Driving: Lane Segmentation & Traffic Sign Detection</h3>
           <p>
-            End-to-end perception system for autonomous vehicles combining semantic lane segmentation 
-            and multi-class traffic sign detection. Trained YOLOv11x-seg model on custom-labeled dataset 
-            with 3 pixel-level classes and 16 traffic sign categories. Achieved real-time inference 
-            capability with robust performance across varied lighting and road conditions.
+            End-to-end perception system for autonomous vehicles combining semantic lane segmentation and multi-class traffic sign detection.
+            Trained YOLOv11x-seg model on custom-labeled dataset with 3 pixel-level classes and 16 traffic sign categories.
+            Achieved real-time inference capability with robust performance across varied lighting and road conditions.
           </p>
           <div class="project-tech">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">YOLOv11x-seg</span>
-            <span class="tech-tag">Ultralytics</span>
             <span class="tech-tag">OpenCV</span>
             <span class="tech-tag">Computer Vision</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/diyeddin" class="project-link">Source Code</a>
+          <div class="card-actions">
+            <a href="https://github.com/diyeddin" class="project-link" target="_blank">View Code →</a>
           </div>
         </article>
 
-        <!-- NLP Grading System -->
         <article class="project-card">
           <h3>Automatic Short Answer Grading Using NLP</h3>
           <p>
-            NLP-based system to automatically grade open-ended exam responses using contextual 
-            embeddings from BERT. Fine-tuned pre-trained transformer models and built complete 
-            pipeline for text preprocessing, tokenization, and scoring. Applied ensemble methods 
-            to improve robustness across different question types.
+             NLP-based system to automatically grade open-ended exam responses using contextual embeddings from BERT.
+             Fine-tuned pre-trained transformer models and built complete pipeline for text preprocessing, tokenization, and scoring.
+             Applied ensemble methods to improve robustness across different question types. 
           </p>
           <div class="project-tech">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">BERT</span>
             <span class="tech-tag">Hugging Face</span>
             <span class="tech-tag">PyTorch</span>
-            <span class="tech-tag">NLP</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/diyeddin" class="project-link">Source Code</a>
+          <div class="card-actions">
+            <a href="https://github.com/diyeddin/asag-capstone" class="project-link" target="_blank">View Code →</a>
           </div>
         </article>
 
-        <!-- Machine Translation Project -->
         <article class="project-card">
           <h3>Turkish-English Machine Translation with UMT5</h3>
           <p>
-            Bidirectional translation system using Google's multilingual UMT5-small model. 
-            Fine-tuned on TED2020 parallel corpus (~80k training pairs) achieving 12.57 BLEU score. 
-            Built user-friendly Streamlit interface and monitored training with Weights & Biases. 
-            Implemented dynamic prefixing and tokenization pipelines for robust translation.
+             Bidirectional translation system using Google's multilingual UMT5-small model.
+             Fine-tuned on TED2020 parallel corpus (~80k training pairs) achieving 12.57 BLEU score. 
+             Built user-friendly Streamlit interface and monitored training with Weights & Biases.
+             Implemented dynamic prefixing and tokenization pipelines for robust translation. 
           </p>
           <div class="project-tech">
-            <span class="tech-tag">Python</span>
             <span class="tech-tag">UMT5</span>
             <span class="tech-tag">Transformers</span>
             <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">NLP</span>
+            <span class="tech-tag">Weights & Biases</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/diyeddin/machine-translation" class="project-link">Source Code</a>
+          <div class="card-actions">
+            <a href="https://github.com/diyeddin/machine-translation" class="project-link" target="_blank">View Code →</a>
           </div>
         </article>
+
       </section>
 
       <div class="coming-soon">
@@ -273,9 +412,76 @@
     </footer>
   </div>
 
+  <div id="galleryModal" class="modal-overlay" onclick="closeCollage(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle" class="modal-title">Project Gallery</h2>
+        <button class="close-modal" onclick="closeCollage(null, true)">×</button>
+      </div>
+      <div id="collageGrid" class="collage-grid">
+        </div>
+    </div>
+  </div>
+
   <script>
-    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- CONFIGURATION ---
+    const projectData = {
+      'delivery': {
+        title: 'Mall Delivery App',
+        path: '/assets/img/delivery-app/', 
+        images: Array.from({length: 11}, (_, i) => `${i + 1}.png`)
+      },
+      'chatbot': {
+        title: 'FAQ RAG Chatbot',
+        path: '/assets/img/chatbot/',
+        images: Array.from({length: 8}, (_, i) => `${i + 1}.png`)
+      }
+    };
+
+    const modal = document.getElementById('galleryModal');
+    const grid = document.getElementById('collageGrid');
+    const title = document.getElementById('modalTitle');
+
+    function openCollage(projectId) {
+      // 1. Get data
+      const data = projectData[projectId];
+      if (!data) return;
+
+      // 2. Set Title
+      title.textContent = data.title;
+
+      // 3. Reset Classes (Important!)
+      grid.className = 'collage-grid'; 
+
+      // 4. Build HTML
+      grid.innerHTML = data.images.map(filename => `
+        <div class="collage-item">
+          <img src="${data.path + filename}" alt="${data.title} Screenshot" loading="lazy">
+        </div>
+      `).join('');
+
+      // 5. Apply Specific Layout Class
+      if (projectId === 'chatbot') {
+        grid.classList.add('single-col');
+      }
+
+      // 6. Show Modal
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeCollage(event, force = false) {
+      if (force || event.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCollage(null, true);
+    });
   </script>
   <script src="/assets/js/chatbot.js"></script>
 </body>

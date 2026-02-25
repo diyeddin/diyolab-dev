@@ -10,29 +10,4 @@
   
   // Append the script to the document head
   document.head.appendChild(script);
-
-  // Track chatbot interactions with Umami
-  script.onload = function() {
-    // Wait for widget to be ready
-    setTimeout(function() {
-      let isOpen = false;
-      
-      // Track chatbot button clicks (when widget opens/closes)
-      const chatbotButton = document.querySelector('.chat-bubble');
-      
-      if (chatbotButton) {
-        chatbotButton.addEventListener('click', function() {
-          if (window.umami) {
-            if (!isOpen) {
-              umami.track('chatbot-opened');
-              isOpen = true;
-            } else {
-              umami.track('chatbot-closed');
-              isOpen = false;
-            }
-          }
-        });
-      }
-    }, 1000);
-  };
 })();

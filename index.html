@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script defer src="https://stats.diyolab.dev/script.js" data-website-id="55014f7b-bb9c-437c-aa3e-94f886ab0646"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Diyeddin — diyolab.dev</title>
-  <meta name="description" content="I build things at the intersection of web, systems, and machine intelligence. Welcome to my lab." />
-  <meta name="author" content="Diyeddin" />
+  <meta name="description" content="I build things at the intersection of web, systems, and machine intelligence." />
   <link rel="stylesheet" href="assets/css/global.css" />
   <style>
-    /* Page-specific styles for the home hero */
-
     .home-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -18,94 +14,37 @@
       align-items: center;
       max-width: 1200px;
       margin: 0 auto;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding: 2rem 0;
+      min-height: 60vh;
     }
 
     @media (max-width: 768px) {
-      .home-hero {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 1rem;
-      }
-      
-      .page-shell {
-        padding: 1.5rem 1rem 2.4rem;
-      }
-      
-      .home-hero {
-        gap: 3rem;
-      }
+      .home-hero { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+      .hero-links { justify-content: center; }
     }
 
-    .hero-text h1 {
-      font-size: clamp(2.1rem, 4vw, 2.8rem);
-      margin-bottom: 0.4rem;
-    }
-
+    .hero-text h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 0.5rem; line-height: 1.1; }
     .hero-text h1 span {
       background: linear-gradient(90deg, #38bdf8, #a855f7, #f97316);
       -webkit-background-clip: text;
       background-clip: text;
-      -webkit-text-fill-color: transparent;
       color: transparent;
     }
 
-    .hero-tagline {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 40ch;
-      line-height: 1.6;
-      margin-bottom: 1.3rem;
-    }
-
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 0.8rem;
-    }
-
-
-
-    .hero-small {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .hero-visual {
-      justify-self: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .portrait-hint {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: 0.5rem;
-      text-align: center;
-    }
+    .hero-tagline { font-size: 1.1rem; color: var(--muted); max-width: 45ch; line-height: 1.6; margin-bottom: 2rem; }
+    
+    .hero-links { display: flex; gap: 1rem; margin-bottom: 2rem; }
+    
+    .btn-primary { background: var(--fg); color: var(--bg); padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.9; }
+    
+    .btn-ghost { background: transparent; color: var(--fg); padding: 0.8rem 1.5rem; border: 1px solid var(--border-subtle); border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
     #portraitCanvas {
       border-radius: 50%;
-      background: radial-gradient(circle at top, #020617, #020617 60%, #020617 100%);
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin-top: clamp(-1rem, -8vw, -6rem);
-    }
-
-    /* Smooth scrolling for any anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Performance optimization for animations */
-    #portraitCanvas {
-      will-change: auto;
+      background: radial-gradient(circle at top, #020617, #020617 60%, #1e293b 100%);
+      width: 350px; height: 350px; max-width: 100%;
     }
   </style>
 </head>
@@ -125,37 +64,28 @@
       <section class="hero-text">
         <h1>Hi, I'm <span>Diyeddin</span>.</h1>
         <p class="hero-tagline">
-          I build things at the intersection of web, systems, and machine intelligence.
-          This is my lab — experiments, projects, and ideas in progress.
+           I build things at the intersection of web, systems, and machine intelligence.
+           This is my lab! experiments, projects, and ideas in progress. 
         </p>
 
         <div class="hero-links">
-          <a class="btn-primary" href="https://github.com/diyeddin" target="_blank">
-            GitHub
-          </a>
-          <a class="btn-ghost" href="https://www.linkedin.com/in/diyeddinalmohamad" target="_blank">
-            LinkedIn
-          </a>
+          <a class="btn-primary" href="/projects">View Projects</a>
+          <a class="btn-ghost" href="https://github.com/diyeddin" target="_blank">GitHub</a>
         </div>
-
-        <p class="hero-small">
-          Use the navigation to explore projects, background, and ways to reach me.
-        </p>
       </section>
 
       <aside class="hero-visual">
-        <canvas id="portraitCanvas" width="400" height="400" aria-label="Interactive particle portrait"></canvas>
-        <p class="portrait-hint">*squint your eyes to see me</p>
+        <canvas id="portraitCanvas" width="400" height="400"></canvas>
       </aside>
     </main>
 
     <footer class="site-footer">
       <span>© <span id="year"></span> diyolab.dev</span>
-      <span>Home — more sections coming soon.</span>
     </footer>
   </div>
 
   <script src="assets/js/portrait.js"></script>
   <script src="assets/js/chatbot.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
