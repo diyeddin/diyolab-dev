@@ -301,16 +301,17 @@
     </footer>
   </div>
 
+  <script src="/assets/js/layout.js"></script>
   <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     // Simple form submission handler (for demo purposes)
-    document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Form submission is for demonstration only. Please use email for direct contact: diyeddinalmohamad@gmail.com');
-    });
+    const contactForm = document.querySelector('form');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Form submission is for demonstration only. Please use email for direct contact: diyeddinalmohamad@gmail.com');
+      });
+    }
   </script>
-  <script src="/assets/js/chatbot.js"></script>
 </body>
 </html>
