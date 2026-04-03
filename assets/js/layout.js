@@ -10,7 +10,7 @@
   }
 
   function loadChatbotWidget() {
-    const widgetSrc = 'https://standbyai.diyolab.dev/widget.js';
+    const widgetSrc = 'https://standbyai.tech/widget.js';
     const existingWidget = document.querySelector(`script[src="${widgetSrc}"]`);
 
     if (existingWidget) {
